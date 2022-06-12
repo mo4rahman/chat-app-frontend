@@ -1,18 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 
-function handleChange(event) {
-  // event.preventDefault();
-}
+function Signup() {
+  const [values, setValues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-function handleSubmit(event) {
-  event.preventDefault();
-  alert("form");
-}
+  // toast allows an error message along with a second optional object of styling/functional options
+  const toastOptions = {
+    position: "bottom-left",
+    // autoClose in milliseconds
+    autoClose: 7000,
+    pauseOnHover: true,
+    draggable: true,
+  };
 
-function Register() {
+  function handleChange(event) {
+    // Destructure the current values
+    setValues({ ...values, [event.target.name]: event.target.value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleValidation();
+  }
+
+  // TODO: come back to check if there is a toast error, border that input with a red border
+  function handleValidation() {
+    const { username, email, Password, confirmPassword } = values;
+    if (confirmPassword !== Password) {
+      // npm install react-toastify for error notifications
+      toast.error(
+        "Your passwords do not match. Make sure they are the same.",
+        toastOptions
+      );
+      return false;
+    } else if (username.length < 3) {
+      toast.error(
+        "Username should be greater than 2 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (Password.length < 3) {
+      toast.error(
+        "Password should be greater than 2 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (email === "") {
+      toast.error("An email address is required!", toastOptions);
+    }
+    return true;
+  }
+
   return (
     <>
       <FormContainter>
@@ -51,6 +98,7 @@ function Register() {
           </span>
         </form>
       </FormContainter>
+      <ToastContainer />
     </>
   );
 }
@@ -134,4 +182,4 @@ const FormContainter = styled.div`
   }
 `;
 
-export default Register;
+export default Signup;
