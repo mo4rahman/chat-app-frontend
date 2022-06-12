@@ -17,9 +17,9 @@ function Register() {
     <>
       <FormContainter>
         <form onSubmit={(event) => handleSubmit(event)}>
-          <div className="brand">
+          <div className="app-logo">
             <img src={Logo} alt="Logo" />
-            <h1>chatty</h1>
+            <h1>CHATTY</h1>
           </div>
           <input
             type="text"
@@ -64,13 +64,35 @@ const FormContainter = styled.div`
   gap: 1rem;
   align-items: center;
   background-color: #03bf83;
-  .brand {
+  .app-logo {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
     img {
       height: 5rem;
+    }
+    h1 {
+      color: #fffcfc;
+    }
+  }
+  form {
+    color: #fffcfc;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* background-color: #00000040; */
+    background-color: #b6b6b6;
+
+    border-radius: 3rem;
+    padding: 4rem 5rem;
+    input {
+      background-color: #d8d8d840;
+      padding: 1rem;
+      border: 0.2rem solid #000000;
+      border-radius: 0.5rem;
+      color: black;
+      font-weight: bold;
     }
   }
 `;
