@@ -56,7 +56,7 @@ function Register() {
 }
 
 const FormContainter = styled.div`
-  height: 100vg;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
