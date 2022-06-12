@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
+import signupRoute from "../utils/APIRoutes";
 
 function Signup() {
   const [values, setValues] = useState({
@@ -27,15 +29,24 @@ function Signup() {
     setValues({ ...values, [event.target.name]: event.target.value });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    handleValidation();
+
+    // If there are no errors, call our API
+    if (handleValidation()) {
+      const { username, email, password, confirmPassword } = values;
+      const { data } = await axios.post(signupRoute, {
+        username,
+        email,
+        password,
+      });
+    }
   }
 
   // TODO: come back to check if there is a toast error, border that input with a red border
   function handleValidation() {
-    const { username, email, Password, confirmPassword } = values;
-    if (confirmPassword !== Password) {
+    const { username, email, password, confirmPassword } = values;
+    if (confirmPassword !== password) {
       // npm install react-toastify for error notifications
       toast.error(
         "Your passwords do not match. Make sure they are the same.",
@@ -48,7 +59,7 @@ function Signup() {
         toastOptions
       );
       return false;
-    } else if (Password.length < 3) {
+    } else if (password.length < 3) {
       toast.error(
         "Password should be greater than 2 characters.",
         toastOptions
@@ -83,7 +94,7 @@ function Signup() {
           <input
             type="password"
             placeholder="Password"
-            name="Password"
+            name="password"
             onChange={(e) => handleChange(e)}
           />
           <input
