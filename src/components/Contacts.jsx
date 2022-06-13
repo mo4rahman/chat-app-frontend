@@ -6,6 +6,7 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+
   useEffect(() => {
     async function fetchData() {
       const data = await JSON.parse(localStorage.getItem("chat-app-user"));
@@ -18,6 +19,7 @@ export default function Contacts({ contacts, changeChat }) {
     setCurrentSelected(index);
     changeChat(contact);
   };
+  
   return (
     <>
       {currentUserImage && currentUserImage && (
