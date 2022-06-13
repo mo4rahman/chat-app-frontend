@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
@@ -14,6 +14,8 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   // toast allows an error message along with a second optional object of styling/functional options
   const toastOptions = {
@@ -34,12 +36,22 @@ function Signup() {
 
     // If there are no errors, call our API
     if (handleValidation()) {
-      const { username, email, password, confirmPassword } = values;
+      const { username, email, password } = values;
       const { data } = await axios.post(signupRoute, {
         username,
         email,
         password,
       });
+      if (data.status === false) {
+        toast.error(data.msg, toastOptions);
+      }
+      if (data.status === true) {
+        // Pass the user information to the local storage
+        //
+        localStorage.setItem("chat-app-user", JSON.stringify(data.user));
+      }
+      // If everything is good to go, set the user to local storage and naviagte to the chat container
+      navigate("/");
     }
   }
 
