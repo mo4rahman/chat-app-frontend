@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
-import signupRoute from "../utils/APIRoutes";
+import { signupRoute } from "../utils/APIRoutes";
 
 function Signup() {
   const [values, setValues] = useState({
@@ -49,9 +49,9 @@ function Signup() {
         // Pass the user information to the local storage
         //
         localStorage.setItem("chat-app-user", JSON.stringify(data.user));
+        // If everything is good to go, set the user to local storage and naviagte to the chat container
+        navigate("/");
       }
-      // If everything is good to go, set the user to local storage and naviagte to the chat container
-      navigate("/");
     }
   }
 
