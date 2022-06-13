@@ -97,6 +97,7 @@ function SetAvatar() {
                   <img
                     src={`data:image/svg+xml;base64,${avatar}`}
                     alt="avatar"
+                    key={avatar}
                     onClick={() => setSelectedAvatar(index)}
                   />
                 </div>
