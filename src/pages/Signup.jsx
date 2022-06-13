@@ -26,6 +26,12 @@ function Signup() {
     draggable: true,
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  }, []);
+
   function handleChange(event) {
     // Destructure the current values
     setValues({ ...values, [event.target.name]: event.target.value });

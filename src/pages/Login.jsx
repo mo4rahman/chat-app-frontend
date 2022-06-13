@@ -24,6 +24,13 @@ function Login() {
     draggable: true,
   };
 
+  // only runs the first time the component is loaded
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  }, []);
+
   function handleChange(event) {
     // Destructure the current values
     setValues({ ...values, [event.target.name]: event.target.value });
