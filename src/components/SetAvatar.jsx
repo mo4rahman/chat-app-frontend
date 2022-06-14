@@ -41,19 +41,26 @@ function SetAvatar() {
     } else {
       const user = await JSON.parse(localStorage.getItem("chat-app-user"));
       // data destructured from the axios api
-      const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-        image: avatars[selectedAvatar],
-      });
-      if (data.isSet) {
-        user.isAvatarImageSet = true;
-        user.avatarImage = data.image;
-        localStorage.setItem("chat-app-user", JSON.stringify(user));
+      if (user.isAvatarImageSet === true) {
+        setisLoading(false);
         navigate("/");
       } else {
-        toast.error(
-          "Having toruble setting the avatar. Please try again in a bit.",
-          toastOptions
-        );
+        const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
+          image: avatars[selectedAvatar],
+        });
+        setisLoading(true);
+        if (data.isSet) {
+          user.isAvatarImageSet = true;
+          user.avatarImage = data.image;
+          localStorage.setItem("chat-app-user", JSON.stringify(user));
+          setisLoading(false);
+          navigate("/");
+        } else {
+          <Container>
+            <img src={Loading} alt="loading" className="loading" />
+          </Container>;
+          setProfilePicture();
+        }
       }
     }
   }
