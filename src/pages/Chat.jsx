@@ -14,6 +14,7 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
+
   useEffect(() => {
     async function fetchData() {
       if (!localStorage.getItem("chat-app-user")) {
@@ -24,6 +25,7 @@ export default function Chat() {
     }
     fetchData();
   }, []);
+
   useEffect(() => {
     if (currentUser) {
       socket.current = io(host);
@@ -44,9 +46,11 @@ export default function Chat() {
     }
     fetchData();
   }, [currentUser]);
+
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };
+  
   return (
     <>
       <Container>

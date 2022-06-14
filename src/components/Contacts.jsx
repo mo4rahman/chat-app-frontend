@@ -15,6 +15,7 @@ export default function Contacts({ contacts, changeChat }) {
     }
     fetchData();
   }, []);
+  
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
