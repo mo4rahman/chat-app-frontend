@@ -50,14 +50,14 @@ export default function Chat() {
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };
-  
+
   return (
     <>
       <Container>
         <div className="container">
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
-            <Welcome />
+              <Welcome />
           ) : (
             <ChatContainer currentChat={currentChat} socket={socket} />
           )}

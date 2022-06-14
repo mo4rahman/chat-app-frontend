@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ChatRobot from "../assets/chat-robot.gif";
+import Logout from "./Logout";
 
 export default function Welcome() {
   const [userName, setUserName] = useState("");
@@ -19,6 +20,7 @@ export default function Welcome() {
         Welcome, <span>{userName}!</span>
       </h1>
       <h3>Please select a chat to Start messaging.</h3>
+      <Logout />
     </Container>
   );
 }
@@ -27,6 +29,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
+  align-self: center;
   color: white;
   flex-direction: column;
   img {
