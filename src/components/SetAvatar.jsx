@@ -66,6 +66,9 @@ function SetAvatar() {
   }
 
   useEffect(() => {
+    // Make sure function is async
+    // Make sure function is async
+    // Make sure function is async
     async function fetchData() {
       const data = [];
       for (let i = 0; i < 4; i++) {
