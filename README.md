@@ -27,14 +27,14 @@ Fullstack MERN app
 - Styled Components
 - Socket.io - web socket to get real time chat with local storage
 
-# Future Implementations
+## Future Implementations
 
 - Create Group chats
 - Accept chat invites instead of being able to message anyone in the database
 - add/delete friends
 - uploading picture functionality instead of adding a link in a form
 
-# Technologies
+## Technologies
 
 -Socket.io
 
