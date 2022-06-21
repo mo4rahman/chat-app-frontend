@@ -36,8 +36,7 @@ Fullstack MERN app
 
 ## Technologies
 
--Socket.io
-
+- Socket.io
 - React.js
 - Express.js
 - Node.js
