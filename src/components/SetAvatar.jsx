@@ -9,7 +9,7 @@ import { setAvatarRoute } from "../utils/APIRoutes";
 import { Buffer } from "buffer";
 
 function SetAvatar() {
-  // open source, free, pass any random numbers at the end and it will generate random avatars
+  // open source, free: pass any random numbers at the end and it will generate random avatars
   const api = "https://api.multiavatar.com/123456";
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);

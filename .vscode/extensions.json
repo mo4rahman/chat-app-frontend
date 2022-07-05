@@ -1,3 +1,6 @@
 {
-  "recommendations": ["zhuangtongfa.material-theme"]
+  "recommendations": [
+    "zhuangtongfa.material-theme",
+    "zhuangtongfa.Material-theme"
+  ]
 }
